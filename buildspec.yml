@@ -11,15 +11,15 @@ phases:
   pre_build:
     commands:
       - echo Running tests...
-      - python -m pytest || true
+      - cd mysite && python -m pytest || true
       - echo Running linting...
-      - flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics || true
+      - cd mysite && flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics || true
   
   build:
     commands:
       - echo Build started on `date`
       - echo Collecting static files...
-      - python manage.py collectstatic --noinput || true
+      - cd mysite && python manage.py collectstatic --noinput || true
   
   post_build:
     commands:
